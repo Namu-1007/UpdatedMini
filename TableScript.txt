@@ -1,0 +1,24 @@
+create table Users (user_id varchar2(4) primary key, password varchar2(8) not null, 
+role varchar2(10),  user_name varchar2(20) not null, mobile_no varchar2(10) not null, 
+phone varchar2(10), address varchar2(25), email varchar2(20) not null);
+
+
+create table Hotel(hotel_id varchar2(4) primary key , city varchar2(10) not null, 
+hotel_name varchar2 (20) not null, 
+address varchar2(25) not null, description varchar2(50), 
+avg_rate_per_night number(7,2) not null, 
+phone_no1 varchar2(10) not null, phone_no2 varchar2(10), rating varchar2(4), 
+email varchar2(20) not null, fax varchar2(15));
+
+
+create table RoomDetails(hotel_id varchar2(4),room_id varchar2(4) primary key,  
+room_no varchar2(3) not null, 
+room_type varchar2(20) not null, per_night_rate number(6,2) not null, 
+availability varchar2(3) ,foreign key(hotel_id) references hotel(hotel_id) ON DELETE CASCADE);
+
+
+create table BookingDetails(booking_id varchar2(4)primary key, room_id varchar2(4),  
+user_id varchar2(4), booked_from date, booked_to date, no_of_adults number(2), 
+no_of_children number(2), amount number(6,2),foreign key(room_id) references roomdetails(room_id) on delete cascade,
+foreign key(user_id) references users(user_id) ON DELETE CASCADE);
+

@@ -22,3 +22,5 @@ user_id varchar2(4), booked_from date, booked_to date, no_of_adults number(2),
 no_of_children number(2), amount number(6,2),foreign key(room_id) references roomdetails(room_id) on delete cascade,
 foreign key(user_id) references users(user_id) ON DELETE CASCADE);
 
+create Sequence htl_id_seq STARTS FROM 100;
+CREATE SEQUENCE booking_sequence STARTS FROM 1;
